@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Authors: Mohamed Ameer and Sahil Kumbhani-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlbumController">
+
+   <children>
+
+   <MenuBar>
+      <menus>
+         <Menu text="Logoff">
+            <items>
+               <MenuItem onAction="#doLogoff" text="Switch user" />
+               <SeparatorMenuItem />
+               <MenuItem onAction="#doExit" text="Close application" />
+            </items>
+         </Menu>
+      </menus>   
+	  </MenuBar>
+   
+   
+
+
+   <HBox>
+   <children>
+
+		 
+<VBox prefWidth="240.0">
+
+    <GridPane alignment="TOP_CENTER" hgap="10" prefHeight="50.0" vgap="10">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tags" wrappingWidth="218.6884765625" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial" size="23.0" />
+                     </font></Text>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>	
+    </GridPane>
+
+    <ListView fx:id="listTag" prefHeight="250.0">
+                  <opaqueInsets>
+                     <Insets right="10.0" />
+                  </opaqueInsets></ListView>
+	
+	
+    <GridPane hgap="10" prefHeight="75.0" vgap="10">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="tagName" prefColumnCount="10" prefWidth="100.0" promptText="Tag Name" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+		
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TagID" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="tagValue" prefColumnCount="10" prefWidth="100.0" promptText="TagID" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+	
+        <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+        </padding>
+        <VBox.margin>
+          <Insets right="1.0" top="1.0" />
+        </VBox.margin>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+    </GridPane>
+	
+	
+	
+    <GridPane hgap="10.0" prefHeight="50.0">
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <VBox.margin>
+            <Insets bottom="20.0" left="20.0" />
+        </VBox.margin>
+
+        <Button onAction="#doAddTag" prefHeight="27.0" prefWidth="100.0" text="Add Tag" GridPane.columnIndex="0" />
+        <Button onAction="#doDeleteTag" prefWidth="100.0" text="Delete Tag" GridPane.columnIndex="1" />
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+
+    </GridPane>
+               <GridPane hgap="10.0" layoutX="30.0" layoutY="413.0" prefHeight="50.0">
+                  <rowConstraints>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <columnConstraints>
+                     <ColumnConstraints maxWidth="36.0" minWidth="0.0" prefWidth="36.0" />
+                     <ColumnConstraints maxWidth="36.0" minWidth="0.0" prefWidth="0.0" />
+                     <ColumnConstraints maxWidth="68.0" minWidth="5.0" prefWidth="44.0" />
+                     <ColumnConstraints maxWidth="200.0" minWidth="114.0" prefWidth="138.0" />
+                     <ColumnConstraints maxWidth="50.0" minWidth="0.0" prefWidth="0.0" />
+                  </columnConstraints>
+                  <children>
+                     <Button onAction="#gotoAlbumList" prefHeight="31.0" prefWidth="191.0" text="Back to Albums" GridPane.columnIndex="3" />
+                  </children>
+               </GridPane>
+</VBox>
+
+			<TabPane fx:id="tab" prefHeight="491.0" prefWidth="660.0">
+				<tabs>
+					<Tab text="Album">
+						<content>
+							  <ScrollPane prefHeight="575.0" prefWidth="660.0">
+								<content>
+											<TilePane fx:id="tile" prefHeight="489.0" prefWidth="660.0" />
+								</content>
+							  </ScrollPane>
+						</content>
+					</Tab>
+					<Tab text="Photo">
+						<content>
+									<Pagination fx:id="pagination" /> 
+						</content>
+					</Tab>
+				</tabs>
+			</TabPane>
+			  
+			  
+			</children>
+	</HBox>
+      <Label text="   NOTE: Right click to add or move photo">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+
+   </children>
+
+
+</VBox>
